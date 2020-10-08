@@ -1,0 +1,97 @@
+﻿@using TXTextControl.Web.MVC
+
+<div class="row">
+
+    <div class="col-12" style="height: 400px;">
+
+        @Html.TXTextControl().TextControl(settings =>
+        {
+            settings.Dock = TXTextControl.Web.DockStyle.Fill;
+        }).LoadText(
+            Server.MapPath("~/App_Data/template.tx"), TXTextControl.Web.StreamType.InternalUnicodeFormat).Render()
+
+    </div>
+
+</div>
+
+<div class="row mt-3">
+
+    <div class="col-12">
+
+        <h4>Conditional Cell Color</h4>
+
+        <form>
+
+            <div class="row">
+                <div class="col-5">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="enableCondition">
+                        <label class="custom-control-label" for="enableCondition">Enable</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="operator">Comparison Operator</label>
+                        <select aria-describedby="operatorHelp" id="operator" class="custom-select form-control form-control-sm">
+                            <option>Equals</option>
+                            <option>NotEqual</option>
+                            <option>LessThan</option>
+                            <option>GreaterThan</option>
+                        </select>
+                        <small id="operatorHelp" class="form-text text-muted">Please select a comparison operator.</small>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="compareValue">Compare to</label>
+                        <input aria-describedby="compareValueHelp" class="form-control form-control-sm" type="number" id="compareValue" data-bind="value:compareValue" />
+                        <small id="compareValueHelp" class="form-text text-muted">Please select value to compare.</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="trueColor">True Color</label>
+                        <select aria-describedby="trueColorHelp" id="trueColor" class="custom-select form-control form-control-sm">
+                            <option value="255,0,0">Red</option>
+                            <option value="0,0,255">Blue</option>
+                            <option value="0,255,0">Green</option>
+                            <option value="255,255,0">Yellow</option>
+                        </select>
+                        <small id="trueColorHelp" class="form-text text-muted">Please select a color for matching values.</small>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="falseColor">False Color</label>
+                        <select aria-describedby="falseColorHelp" id="falseColor" class="custom-select form-control form-control-sm">
+                            <option value="255,0,0">Red</option>
+                            <option value="0,0,255">Blue</option>
+                            <option value="0,255,0">Green</option>
+                            <option value="255,255,0">Yellow</option>
+                        </select>
+                        <small id="falseColorHelp" class="form-text text-muted">Please select a color for non-matching values.</small>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<div class="row mt-3">
+
+    <div class="col-12">
+
+        <input id="mergeDocument" class="btn btn-primary" type="button" value="Merge" />
+
+    </div>
+
+</div>
